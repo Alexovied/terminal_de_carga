@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="RAC — Terminal de carga de datos para el reconocimiento y clasificación inteligente de residuos." />
+    <title>RAC · Terminal de Carga</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Toastify CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <!-- ── Fondo animado ── -->
+    <div class="bg-mesh" aria-hidden="true">
+        <div class="bg-mesh__orb bg-mesh__orb--1"></div>
+        <div class="bg-mesh__orb bg-mesh__orb--2"></div>
+        <div class="bg-mesh__orb bg-mesh__orb--3"></div>
+    </div>
+
+    <!-- ── Contenedor principal ── -->
+    <main class="rac-container">
+        <div class="glass-card">
+
+            <!-- Header -->
+            <header class="rac-header">
+                <div class="rac-header__badge">
+                    <span class="pulse"></span>
+                    Sistema activo
+                </div>
+                <h1 class="rac-header__title">RAC · Terminal de Carga</h1>
+                <p class="rac-header__subtitle">Reconocimiento y Clasificación de Residuos</p>
+            </header>
+
+            <!-- Formulario -->
+            <form id="rac-form" method="POST" action="#" enctype="multipart/form-data" novalidate>
+
+                <!-- Tipo de residuo -->
+                <div class="form-group">
+                    <label for="tipo-residuo"><i class="fa-solid fa-recycle"></i> Tipo de residuo</label>
+                    <select id="tipo-residuo" class="form-control" required>
+                        <option value="" disabled selected>Seleccionar categoría…</option>
+                        <option value="plastico">Plástico</option>
+                        <option value="vidrio">Vidrio</option>
+                        <option value="papel">Papel / Cartón</option>
+                        <option value="organico">Orgánico</option>
+                        <option value="metal">Metal</option>
+                        <option value="electronico">Electrónico</option>
+                        <option value="otros">Otros</option>
+                    </select>
+                    <span class="error-msg">Selecciona un tipo de residuo.</span>
+                </div>
+
+                <!-- Imagen -->
+                <div class="form-group">
+                    <label><i class="fa-solid fa-image"></i> Imagen del residuo</label>
+                    <div id="upload-zone" class="upload-zone">
+                        <div class="upload-zone__icon"><i class="fa-solid fa-camera"></i></div>
+                        <p class="upload-zone__text">
+                            Arrastra una imagen aquí o <span>selecciona un archivo</span>
+                        </p>
+                        <input type="file" id="imagen-residuo" accept="image/*" required />
+                    </div>
+                    <span class="error-msg">Sube una imagen del residuo.</span>
+
+                    <!-- Preview -->
+                    <div id="image-preview" class="image-preview">
+                        <img id="preview-img" src="" alt="Vista previa del residuo" />
+                        <button type="button" id="remove-image" class="image-preview__remove"
+                            title="Eliminar imagen"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                </div>
+
+                <!-- Nombre + Fecha -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre-residuo"><i class="fa-solid fa-tag"></i> Nombre del residuo</label>
+                        <input type="text" id="nombre-residuo" class="form-control" placeholder="Ej: Botella PET, Caja de cartón"
+                            required />
+                        <span class="error-msg">Ingresa el nombre del residuo.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha"><i class="fa-solid fa-calendar-days"></i> Fecha</label>
+                        <input type="date" id="fecha" class="form-control" required />
+                        <span class="error-msg">Selecciona una fecha.</span>
+                    </div>
+                </div>
+
+                <!-- Botón de envío -->
+                <button type="submit" id="btn-submit" class="btn-submit">
+                    <span class="spinner"></span>
+                    <span class="btn-text"><i class="fa-solid fa-paper-plane"></i> Registrar Residuo</span>
+                </button>
+
+            </form>
+
+            <!-- Footer -->
+            <p class="rac-footer">RAC v1.0 · 2026</p>
+
+        </div>
+    </main>
+
+    <!-- Toastify JS -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <!-- App Logic -->
+    <script src="script.js"></script>
+</body>
+
+</html>
